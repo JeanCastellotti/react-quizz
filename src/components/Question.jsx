@@ -1,16 +1,17 @@
-import QuestionList from './QuestionList'
+import { useQuiz } from '../context/QuizContext'
+import Options from './Options'
 
-function Question({ question, answer, onSelectAnswer, onNextQuestion }) {
+function Question() {
+  const { questions, currentQuestionIndex } = useQuiz()
+
+  const question = questions.at(currentQuestionIndex)
+
   return (
     <>
       <h4 className="mb-10 text-center text-xl font-bold">
         {question.question}
       </h4>
-      <QuestionList
-        question={question}
-        answer={answer}
-        onSelectAnswer={onSelectAnswer}
-      />
+      <Options question={question} />
     </>
   )
 }

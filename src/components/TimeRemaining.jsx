@@ -1,12 +1,15 @@
 import { useEffect } from 'react'
+import { useQuiz } from '../context/QuizContext'
 
-function TimeRemaining({ secondsRemaining, onTick }) {
+function TimeRemaining() {
+  const { secondsRemaining, dispatch } = useQuiz()
+
   const mins = Math.floor(secondsRemaining / 60)
   const seconds = secondsRemaining % 60
 
   useEffect(() => {
     const timer = setInterval(() => {
-      onTick()
+      dispatch({ type: 'tick' })
     }, 1000)
 
     return () => {

@@ -1,10 +1,9 @@
-function Progress({
-  currentQuestionIndex,
-  countQuestions,
-  answer,
-  score,
-  totalPoints,
-}) {
+import { useQuiz } from '../context/QuizContext'
+
+function Progress() {
+  const { currentQuestionIndex, countQuestions, answer, score, totalPoints } =
+    useQuiz()
+
   const progressBarPercentage =
     ((currentQuestionIndex + Number(answer !== null)) / countQuestions) * 100
 
